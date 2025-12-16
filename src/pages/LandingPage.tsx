@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Waves, Zap, Mic } from 'lucide-react';
 
 const LandingPage = () => {
