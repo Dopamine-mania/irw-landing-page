@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #0a0a0f;
+}
+
+body {
+  background-color: var(--bg-deep);
+  font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+  color: #f3f4f6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Video fade-in animation */
+video {
+  transition: opacity 1s ease-in;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
