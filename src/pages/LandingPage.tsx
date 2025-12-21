@@ -10,28 +10,59 @@ const LandingPage = () => {
       {/* --- 全局噪点 --- */}
       <div className="noise-overlay" />
 
-      {/* --- 背景视频层 (色调调整) --- */}
-      <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 0, background: '#02040A' }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, transform: 'scale(1.05)' }}
-        >
-          <source src="/assets/hero-bg.mp4" type="video/mp4" />
-        </video>
+      {/* --- 背景层 (深海蓝渐变 - 不依赖视频) --- */}
+      <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 0 }}>
+        {/* 主背景：深邃的蓝黑渐变 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: 'radial-gradient(ellipse at top, #0c4a6e 0%, #1e3a8a 20%, #1e1b4b 40%, #0f172a 60%, #020617 100%)'
+        }} />
 
-        {/* 蓝黑色调遮罩 - 调低透明度让视频透出来 */}
-        <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: '#02040A', opacity: 0.5, mixBlendMode: 'multiply' }} />
-        <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: 'radial-gradient(circle at center, transparent 0%, #02040A 120%)', opacity: 0.9 }} />
+        {/* 动态光晕效果 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: 'radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%)',
+          animation: 'pulse 8s ease-in-out infinite'
+        }} />
+
+        {/* 底部暗角 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(2, 4, 10, 0.8) 100%)'
+        }} />
       </div>
 
       {/* --- 顶部导航 --- */}
-      <nav className="relative z-20 w-full px-8 py-6 flex justify-between items-center max-w-7xl mx-auto">
+      <nav style={{
+        position: 'relative',
+        zIndex: 20,
+        width: '100%',
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        paddingTop: '1.5rem',
+        paddingBottom: '1.5rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        maxWidth: '80rem',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      }}>
 
         {/* Left Side: Logo & Brand Name */}
-        <div className="flex items-center gap-4">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           {/* 关键修复：使用 inline style 强制尺寸（Tailwind 4.x 兼容性问题）*/}
           <img
             src="/assets/logo.png"
