@@ -11,11 +11,15 @@ const LandingPage = () => {
       <div className="noise-overlay" />
 
       {/* --- 背景层 --- */}
-      <div className="fixed inset-0 z-0">
+      <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 0 }}>
         {/* 主背景渐变 - 明亮紫色渐变 */}
         <div
-          className="absolute inset-0"
           style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
             background: 'linear-gradient(135deg, #4338ca 0%, #7c3aed 25%, #a855f7 50%, #4c1d95 75%, #312e81 100%)'
           }}
         />
@@ -26,16 +30,30 @@ const LandingPage = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.15, mixBlendMode: 'screen' }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.15,
+            mixBlendMode: 'screen'
+          }}
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
         {/* 柔和暗角 - 只在底部 */}
         <div
-          className="absolute inset-0"
           style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
             background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(0,0,0,0.3) 100%)'
           }}
         />
