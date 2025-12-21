@@ -28,36 +28,35 @@ const LandingPage = () => {
       </div>
 
       {/* --- 顶部导航 --- */}
-      <nav className="relative z-20 w-full px-6 py-8 flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo 区域 */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex items-center gap-3"
-        >
-          {/* Logo 图片 */}
-          <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
+      <nav className="relative z-20 w-full px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
 
-          <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-[0.1em] text-white uppercase leading-none">
+        {/* Left Side: Logo & Brand Name */}
+        <div className="flex items-center gap-4">
+          {/* 关键修复：限制 Logo 宽高，防止撑爆页面 */}
+          <img
+            src="/assets/logo.png"
+            alt="In Resonance Well"
+            className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]"
+          />
+
+          <div className="flex flex-col justify-center">
+            <span className="text-sm font-bold tracking-[0.15em] text-white uppercase leading-tight">
               In Resonance
             </span>
-            <span className="text-[10px] font-light tracking-[0.2em] text-brand-400 uppercase leading-none mt-1">
+            <span className="text-[10px] font-medium tracking-[0.3em] text-brand-400 uppercase leading-tight">
               Well Labs
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.a
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+        {/* Right Side: Contact */}
+        <a
           href="mailto:support@inresonancewell.com"
-          className="text-xs font-medium text-gray-400 hover:text-white transition-colors uppercase tracking-widest"
+          className="text-xs font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-widest border border-white/10 px-4 py-2 rounded-full hover:bg-white/5"
         >
           Contact
-        </motion.a>
+        </a>
+
       </nav>
 
       {/* --- 核心内容区 --- */}
@@ -128,15 +127,15 @@ const LandingPage = () => {
         <div className="flex flex-col items-center justify-center gap-2 text-center">
 
           {/* 地点 */}
-          <div className="flex items-center gap-2 text-gray-400">
-            <Globe2 size={12} />
-            <span className="text-[10px] font-bold tracking-[0.25em] uppercase">
+          <div className="flex items-center gap-2 text-indigo-200/90">
+            <Globe2 size={14} />
+            <span className="text-xs font-bold tracking-[0.25em] uppercase font-sans">
               London, UK
             </span>
           </div>
 
           {/* 版权 */}
-          <div className="text-[10px] text-gray-700 font-sans tracking-wide">
+          <div className="text-[10px] text-gray-400 font-bold font-sans tracking-wide">
             &copy; 2025 In Resonance Well Ltd. All rights reserved.
           </div>
 
