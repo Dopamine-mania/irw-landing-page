@@ -13,7 +13,12 @@ const LandingPage = () => {
       {/* --- 背景层 --- */}
       <div className="fixed inset-0 z-0">
         {/* 主背景渐变 - 深紫到深蓝 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-950 to-black" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, #1e1b4b 0%, #581c87 50%, #000000 100%)'
+          }}
+        />
 
         {/* 视频层 - 可选增强 */}
         <video
@@ -21,13 +26,19 @@ const LandingPage = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-lighten"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.2, mixBlendMode: 'lighten' }}
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
         {/* 柔和暗角 */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/50" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at center, transparent 0%, transparent 50%, rgba(0,0,0,0.5) 100%)'
+          }}
+        />
       </div>
 
       {/* --- 顶部导航 --- */}
@@ -76,10 +87,19 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none drop-shadow-lg"
+          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none"
+          style={{ textShadow: '0 4px 6px rgba(0,0,0,0.3)' }}
         >
           Tune Your <br/>
-          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-200 to-pink-300">
+          <span
+            className="font-bold"
+            style={{
+              background: 'linear-gradient(90deg, #a5b4fc 0%, #e9d5ff 50%, #fbcfe8 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
             Frequency.
           </span>
         </motion.h1>
