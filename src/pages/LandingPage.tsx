@@ -12,11 +12,11 @@ const LandingPage = () => {
 
       {/* --- 背景层 --- */}
       <div className="fixed inset-0 z-0">
-        {/* 主背景渐变 - 深紫到深蓝 */}
+        {/* 主背景渐变 - 明亮紫色渐变 */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, #312e81 0%, #7c3aed 30%, #4c1d95 70%, #1e1b4b 100%)'
+            background: 'linear-gradient(135deg, #4338ca 0%, #7c3aed 25%, #a855f7 50%, #4c1d95 75%, #312e81 100%)'
           }}
         />
 
@@ -27,16 +27,16 @@ const LandingPage = () => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.2, mixBlendMode: 'lighten' }}
+          style={{ opacity: 0.15, mixBlendMode: 'screen' }}
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* 柔和暗角 */}
+        {/* 柔和暗角 - 只在底部 */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at center, transparent 0%, transparent 50%, rgba(0,0,0,0.5) 100%)'
+            background: 'linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(0,0,0,0.3) 100%)'
           }}
         />
       </div>
