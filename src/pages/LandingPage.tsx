@@ -12,28 +12,22 @@ const LandingPage = () => {
 
       {/* --- 背景层 --- */}
       <div className="fixed inset-0 z-0">
-        {/* 背景图片 - 主要背景 */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center opacity-50"
-          style={{ backgroundImage: 'url(/assets/hero-poster.jpg)' }}
-        />
+        {/* 主背景渐变 - 深紫到深蓝 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-950 to-black" />
 
-        {/* 视频层 - 如果能播放则覆盖在图片上 */}
+        {/* 视频层 - 可选增强 */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          poster="/assets/hero-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-lighten"
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* 暗角遮罩 (Vignette) - 让视线集中在中间 */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-void/20 to-void/90" />
-        {/* 底部渐变 - 保证文字可读 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-void/20 via-transparent to-void/80" />
+        {/* 柔和暗角 */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/50" />
       </div>
 
       {/* --- 顶部导航 --- */}
@@ -82,10 +76,10 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none"
+          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none drop-shadow-lg"
         >
           Tune Your <br/>
-          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-white to-purple-200">
+          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-200 to-pink-300">
             Frequency.
           </span>
         </motion.h1>
