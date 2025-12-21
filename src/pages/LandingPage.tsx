@@ -1,130 +1,139 @@
-import { ArrowRight, Waves, Zap, Mic } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Globe2, Sparkles } from 'lucide-react';
 
 const LandingPage = () => {
-  // 产品跳转链接
   const APP_URL = "https://flow.inresonancewell.com";
-  const CONTACT_EMAIL = "support@inresonancewell.com";
 
   return (
-    <div className="relative min-h-screen flex flex-col font-sans selection:bg-indigo-500/30">
+    <div className="relative min-h-screen flex flex-col justify-between selection:bg-indigo-500/30">
 
-      {/* --- Background Video Layer --- */}
+      {/* --- 全局噪点层 (Texture) --- */}
+      <div className="noise-overlay" />
+
+      {/* --- 背景视频层 --- */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[#0a0a0f]/60 z-10" /> {/* 黑色遮罩，确保文字可读 */}
+        {/* 视频 */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          poster="/assets/hero-poster.jpg" // 移动端兜底图
-          className="w-full h-full object-cover opacity-80"
+          className="w-full h-full object-cover opacity-60 scale-105" // 稍微放大防止白边
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
+
+        {/* 暗角遮罩 (Vignette) - 让视线集中在中间 */}
+        <div className="absolute inset-0 bg-hero-vignette opacity-80" />
+        {/* 底部渐变 - 保证文字可读 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-void/30 via-transparent to-void/90" />
       </div>
 
-      {/* --- Navbar (Minimalist) --- */}
-      <nav className="relative z-20 w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
-        <div className="text-xl font-bold tracking-widest uppercase text-white/90">
-          In Resonance Well
-        </div>
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          className="text-sm text-gray-300 hover:text-white transition-colors tracking-wide"
+      {/* --- 顶部导航 --- */}
+      <nav className="relative z-20 w-full px-8 py-8 flex justify-between items-center max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-2"
+        >
+          <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse-slow" />
+          <span className="text-sm font-light tracking-[0.2em] uppercase text-white/80">
+            In Resonance Well
+          </span>
+        </motion.div>
+
+        <motion.a
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          href="mailto:support@inresonancewell.com"
+          className="text-xs font-medium text-white/60 hover:text-white transition-colors uppercase tracking-widest border-b border-transparent hover:border-white/50 pb-1"
         >
           Contact
-        </a>
+        </motion.a>
       </nav>
 
-      {/* --- Hero Section --- */}
-      <main className="relative z-20 flex-1 flex flex-col items-center justify-center px-6 text-center mt-10 mb-20">
+      {/* --- 核心内容区 (Hero) --- */}
+      <main className="relative z-20 flex-1 flex flex-col items-center justify-center px-4 text-center">
 
-        {/* Badge: 公司愿景 */}
-        <div className="mb-8 animate-fade-in-up">
-          <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-medium tracking-[0.2em] text-indigo-200 uppercase">
-            Cyber-Spiritual Studio
-          </span>
-        </div>
-
-        {/* H1: 产品发布 */}
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-2xl max-w-4xl leading-tight">
-          Tune your frequency <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-            with Elemental Flow.
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-lg md:text-xl text-gray-300/90 max-w-2xl mb-12 font-light leading-relaxed">
-          首个融合东方五行智慧与 WebGL 粒子的 3D 疗愈元宇宙。
-          <br className="hidden md:block"/>
-          Discover the first AI-powered healing space for the spatial web.
-        </p>
-
-        {/* CTA Button (The Portal Key) */}
-        <a
-          href={APP_URL}
-          className="group relative px-8 py-4 bg-white text-[#0a0a0f] rounded-full font-bold text-lg tracking-wide hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(99,102,241,0.6)]"
+        {/* 标签 */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
         >
-          <span className="flex items-center gap-2">
-            ENTER THE VOID
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          <Sparkles size={12} className="text-indigo-400" />
+          <span className="text-[10px] font-bold tracking-[0.15em] text-indigo-100 uppercase">
+            The Cyber-Spiritual Metaverse
           </span>
-        </a>
+        </motion.div>
 
-        {/* Social Proof / Tech Stack */}
-        <p className="mt-12 text-xs text-gray-500 tracking-widest uppercase">
-          Powered by React Three Fiber & OpenAI
-        </p>
+        {/* 主标题 */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none"
+        >
+          Tune Your <br/>
+          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-white to-purple-200">
+            Frequency.
+          </span>
+        </motion.h1>
+
+        {/* 副标题 */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-base md:text-lg text-gray-400 max-w-lg mb-12 leading-relaxed font-light"
+        >
+          通过古老的五行智慧与 WebGL 数字艺术，<br className="hidden md:block"/>
+          在浏览器中重建你的内在能量场。
+        </motion.p>
+
+        {/* 核心按钮 (Portal) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <a
+            href={APP_URL}
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-medium text-sm tracking-widest uppercase transition-all duration-500 hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.4)]"
+          >
+            <span>Enter Flow</span>
+            <div className="bg-black text-white rounded-full p-1 group-hover:rotate-45 transition-transform duration-300">
+              <ArrowRight size={14} />
+            </div>
+          </a>
+
+          <p className="mt-4 text-[10px] text-gray-500 uppercase tracking-widest">
+            No Install Required • Headphones Recommended
+          </p>
+        </motion.div>
+
       </main>
 
-      {/* --- Features Grid (Why Flow?) --- */}
-      <section className="relative z-20 w-full max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          {/* Feature 1 */}
-          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-            <Waves className="text-cyan-400 mb-4" size={32} />
-            <h3 className="text-xl font-bold text-white mb-2">Immersive Particles</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              漫游于由 50,000 个光粒子构建的赛博山水。
-              <br/>Travel through 3D landscapes built from light.
-            </p>
-          </div>
-
-          {/* Feature 2 */}
-          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-            <Mic className="text-rose-400 mb-4" size={32} />
-            <h3 className="text-xl font-bold text-white mb-2">AI Voice Diagnosis</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              AI 语音情绪分析，为你匹配水(静)或火(动)的能量。
-              <br/>Voice analysis determines your missing element.
-            </p>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-            <Zap className="text-amber-400 mb-4" size={32} />
-            <h3 className="text-xl font-bold text-white mb-2">432Hz Resonance</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              校准脉轮能量的空间音频。
-              <br/>Spatial audio aligned with your energy centers.
-            </p>
-          </div>
-
+      {/* --- 底部状态栏 --- */}
+      <footer className="relative z-20 w-full px-8 py-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 uppercase tracking-widest border-t border-white/5">
+        <div className="flex items-center gap-2">
+          <Globe2 size={12} />
+          <span>London, UK</span>
         </div>
-      </section>
 
-      {/* --- Footer --- */}
-      <footer className="relative z-20 py-8 text-center text-xs text-gray-600 border-t border-white/5">
-        <p>&copy; 2025 In Resonance Well Ltd. Registered in UK.</p>
-        <div className="flex justify-center gap-4 mt-2">
-           <a href="/privacy" className="hover:text-gray-400">Privacy Policy</a>
-           <span>•</span>
-           <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gray-400">Support</a>
+        <div className="flex gap-6">
+          <span>WebGL Powered</span>
+          <span>432Hz Audio</span>
+          <span>AI Diagnosis</span>
+        </div>
+
+        <div>
+          © 2025 In Resonance Well Ltd.
         </div>
       </footer>
-
     </div>
   );
 };
