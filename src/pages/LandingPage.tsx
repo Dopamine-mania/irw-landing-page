@@ -16,7 +16,7 @@ const LandingPage = () => {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, #1e1b4b 0%, #581c87 50%, #000000 100%)'
+            background: 'linear-gradient(135deg, #312e81 0%, #7c3aed 30%, #4c1d95 70%, #1e1b4b 100%)'
           }}
         />
 
