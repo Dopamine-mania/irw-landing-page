@@ -18,15 +18,15 @@ const LandingPage = () => {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-60 scale-105" // 稍微放大防止白边
+          className="w-full h-full object-cover opacity-40 scale-105" // 稍微放大防止白边
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
         {/* 暗角遮罩 (Vignette) - 让视线集中在中间 */}
-        <div className="absolute inset-0 bg-hero-vignette opacity-80" />
+        <div className="absolute inset-0 bg-hero-vignette opacity-60" />
         {/* 底部渐变 - 保证文字可读 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-void/30 via-transparent to-void/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void/70" />
       </div>
 
       {/* --- 顶部导航 --- */}
@@ -90,8 +90,8 @@ const LandingPage = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-base md:text-lg text-gray-400 max-w-lg mb-12 leading-relaxed font-light"
         >
-          通过古老的五行智慧与 WebGL 数字艺术，<br className="hidden md:block"/>
-          在浏览器中重建你的内在能量场。
+          Ancient Five Elements wisdom meets WebGL digital art.<br className="hidden md:block"/>
+          Rebuild your inner energy field in the browser.
         </motion.p>
 
         {/* 核心按钮 (Portal) */}
