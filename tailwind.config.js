@@ -10,13 +10,22 @@ export default {
         sans: ['Outfit', 'Noto Sans SC', 'sans-serif'],
       },
       colors: {
-        void: '#030305', // 比纯黑更有质感的深空黑
-        starlight: '#F3F4F6', // 柔和白
-        glass: 'rgba(255, 255, 255, 0.05)', // 玻璃底色
+        // 新的深空黑背景 (Deep Tech Black)
+        void: '#02040A',
+        // 科技蓝 (Electric Blue)
+        brand: {
+          100: '#e0f2fe', // 极淡的冰蓝色 (用于文字高亮背景)
+          400: '#38bdf8', // 青空蓝 (用于副标题)
+          500: '#0ea5e9', // 主品牌色 (用于按钮)
+          600: '#2563eb', // 深一点的蓝 (用于渐变末端)
+          900: '#0c4a6e', // 深海蓝 (用于标签背景 bg-brand-900/10)
+        },
+        starlight: '#F8FAFC',
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-vignette': 'radial-gradient(circle at center, transparent 0%, #030305 100%)',
+        // 新的遮罩：从深蓝到深黑的渐变，更有质感
+        'hero-vignette': 'radial-gradient(circle at center, transparent 0%, #02040A 120%)',
+        'blue-glow': 'conic-gradient(from 180deg at 50% 50%, #2563eb 0deg, #38bdf8 180deg, #2563eb 360deg)',
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
