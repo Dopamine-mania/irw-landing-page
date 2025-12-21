@@ -32,11 +32,12 @@ const LandingPage = () => {
 
         {/* Left Side: Logo & Brand Name */}
         <div className="flex items-center gap-4">
-          {/* 关键修复：限制 Logo 宽高，防止撑爆页面 */}
+          {/* 关键修复：使用 inline style 强制尺寸（Tailwind 4.x 兼容性问题）*/}
           <img
             src="/assets/logo.png"
             alt="In Resonance Well"
-            className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]"
+            style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+            className="drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]"
           />
 
           <div className="flex flex-col justify-center">
