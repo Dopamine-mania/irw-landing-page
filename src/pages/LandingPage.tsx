@@ -11,24 +11,24 @@ const LandingPage = () => {
       <div className="noise-overlay" />
 
       {/* --- 背景视频层 (色调调整) --- */}
-      <div className="fixed inset-0 z-0 bg-void">
+      <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 0, background: '#02040A' }}>
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-50 scale-105"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5, transform: 'scale(1.05)' }}
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
-        {/* 蓝黑色调遮罩 - 打造深海科技感 */}
-        <div className="absolute inset-0 bg-void/80 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-hero-vignette opacity-90" />
+        {/* 蓝黑色调遮罩 - 调低透明度让视频透出来 */}
+        <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: '#02040A', opacity: 0.5, mixBlendMode: 'multiply' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: 'radial-gradient(circle at center, transparent 0%, #02040A 120%)', opacity: 0.9 }} />
       </div>
 
       {/* --- 顶部导航 --- */}
-      <nav className="relative z-20 w-full px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
+      <nav className="relative z-20 w-full px-8 py-6 flex justify-between items-center max-w-7xl mx-auto">
 
         {/* Left Side: Logo & Brand Name */}
         <div className="flex items-center gap-4">
@@ -42,10 +42,10 @@ const LandingPage = () => {
 
           <div className="flex flex-col justify-center">
             <span className="text-sm font-bold tracking-[0.15em] text-white uppercase leading-tight">
-              In Resonance
+              In Resonance Well
             </span>
             <span className="text-[10px] font-medium tracking-[0.3em] text-brand-400 uppercase leading-tight">
-              Well Labs
+              Labs
             </span>
           </div>
         </div>
@@ -84,7 +84,15 @@ const LandingPage = () => {
           className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none"
         >
           Tune Your <br/>
-          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-400 to-brand-600">
+          <span
+            className="font-bold"
+            style={{
+              background: 'linear-gradient(90deg, #ffffff 0%, #38bdf8 50%, #2563eb 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
             Frequency.
           </span>
         </motion.h1>
