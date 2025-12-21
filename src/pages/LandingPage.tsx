@@ -65,11 +65,14 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-3"
         >
           <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse-slow" />
           <span className="text-sm font-light tracking-[0.2em] uppercase text-white/80">
             In Resonance Well
+          </span>
+          <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-gray-400 uppercase tracking-wider font-sans">
+            LABS
           </span>
         </motion.div>
 
@@ -127,10 +130,12 @@ const LandingPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-base md:text-lg text-gray-400 max-w-lg mb-12 leading-relaxed font-light"
+          className="text-base md:text-lg text-gray-300 max-w-xl mb-12 leading-relaxed font-light tracking-wide"
         >
-          Ancient Five Elements wisdom meets WebGL digital art.<br className="hidden md:block"/>
-          Rebuild your inner energy field in the browser.
+          Building the next generation of digital wellbeing tools.<br className="hidden md:block"/>
+          <span className="text-gray-400 text-sm mt-2 block">
+            Experience our flagship product: Flow.
+          </span>
         </motion.p>
 
         {/* 核心按钮 (Portal) */}
@@ -157,20 +162,31 @@ const LandingPage = () => {
       </main>
 
       {/* --- 底部状态栏 --- */}
-      <footer className="relative z-20 w-full px-8 py-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 uppercase tracking-widest border-t border-white/5">
-        <div className="flex items-center gap-2">
-          <Globe2 size={12} />
-          <span>London, UK</span>
-        </div>
+      <footer className="relative z-20 w-full py-12 border-t border-white/10">
+        <div className="flex flex-col items-center justify-center gap-6 text-center">
 
-        <div className="flex gap-6">
-          <span>WebGL Powered</span>
-          <span>432Hz Audio</span>
-          <span>AI Diagnosis</span>
-        </div>
+          {/* 位置信息 */}
+          <div className="flex items-center gap-2 text-indigo-200/80">
+            <Globe2 size={14} />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase font-sans">
+              London, UK
+            </span>
+          </div>
 
-        <div>
-          © 2025 In Resonance Well Ltd.
+          {/* 技术特性 - 关键修复：用点分隔 */}
+          <div className="flex flex-wrap justify-center gap-4 text-[10px] font-medium text-gray-500 uppercase tracking-widest font-sans">
+            <span>WebGL Powered</span>
+            <span className="text-indigo-500">•</span>
+            <span>432Hz Audio</span>
+            <span className="text-indigo-500">•</span>
+            <span>AI Diagnosis</span>
+          </div>
+
+          {/* 版权信息 */}
+          <div className="text-[10px] text-gray-600 font-light font-sans">
+            &copy; 2025 In Resonance Well Ltd. All rights reserved.
+          </div>
+
         </div>
       </footer>
     </div>
