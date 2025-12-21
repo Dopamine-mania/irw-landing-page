@@ -10,23 +10,30 @@ const LandingPage = () => {
       {/* --- 全局噪点层 (Texture) --- */}
       <div className="noise-overlay" />
 
-      {/* --- 背景视频层 --- */}
+      {/* --- 背景层 --- */}
       <div className="fixed inset-0 z-0">
-        {/* 视频 */}
+        {/* 背景图片 - 主要背景 */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center opacity-50"
+          style={{ backgroundImage: 'url(/assets/hero-poster.jpg)' }}
+        />
+
+        {/* 视频层 - 如果能播放则覆盖在图片上 */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-40 scale-105" // 稍微放大防止白边
+          poster="/assets/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         >
           <source src="/assets/hero-bg.mp4" type="video/mp4" />
         </video>
 
         {/* 暗角遮罩 (Vignette) - 让视线集中在中间 */}
-        <div className="absolute inset-0 bg-hero-vignette opacity-60" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-void/20 to-void/90" />
         {/* 底部渐变 - 保证文字可读 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-void/20 via-transparent to-void/80" />
       </div>
 
       {/* --- 顶部导航 --- */}
