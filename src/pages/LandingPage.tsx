@@ -162,28 +162,19 @@ const LandingPage = () => {
       </main>
 
       {/* --- 底部状态栏 --- */}
-      <footer className="relative z-20 w-full py-12 border-t border-white/10">
-        <div className="flex flex-col items-center justify-center gap-6 text-center">
+      <footer className="relative z-20 w-full py-8 border-t border-white/10 bg-black/20 backdrop-blur-lg">
+        <div className="flex flex-col items-center justify-center gap-2 text-center">
 
-          {/* 位置信息 */}
-          <div className="flex items-center gap-2 text-indigo-200/80">
-            <Globe2 size={14} />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase font-sans">
+          {/* 第一行：地点 - 加粗，字间距拉开 */}
+          <div className="flex items-center gap-2 text-white/80 font-sans">
+            <Globe2 size={12} />
+            <span className="text-xs font-bold tracking-[0.25em] uppercase">
               London, UK
             </span>
           </div>
 
-          {/* 技术特性 - 关键修复：用点分隔 */}
-          <div className="flex flex-wrap justify-center gap-4 text-[10px] font-medium text-gray-500 uppercase tracking-widest font-sans">
-            <span>WebGL Powered</span>
-            <span className="text-indigo-500">•</span>
-            <span>432Hz Audio</span>
-            <span className="text-indigo-500">•</span>
-            <span>AI Diagnosis</span>
-          </div>
-
-          {/* 版权信息 */}
-          <div className="text-[10px] text-gray-600 font-light font-sans">
+          {/* 第二行：版权 - 灰色，极小 */}
+          <div className="text-[10px] text-white/40 font-sans tracking-wide">
             &copy; 2025 In Resonance Well Ltd. All rights reserved.
           </div>
 
