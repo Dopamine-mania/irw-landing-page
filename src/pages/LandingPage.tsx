@@ -95,7 +95,29 @@ const LandingPage = () => {
         {/* Right Side: Contact */}
         <a
           href="mailto:support@inresonancewell.com"
-          className="text-xs font-bold text-gray-400 hover:text-white transition-colors uppercase tracking-widest border border-white/10 px-4 py-2 rounded-full hover:bg-white/5"
+          style={{
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            color: '#9ca3af',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            paddingLeft: '1rem',
+            paddingRight: '1rem',
+            paddingTop: '0.5rem',
+            paddingBottom: '0.5rem',
+            borderRadius: '9999px',
+            transition: 'all 0.3s',
+            cursor: 'pointer'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = '#9ca3af';
+            e.currentTarget.style.backgroundColor = 'transparent';
+          }}
         >
           Contact
         </a>
@@ -137,7 +159,7 @@ const LandingPage = () => {
           <span
             style={{
               fontWeight: 900,
-              background: 'linear-gradient(90deg, #ffffff 0%, #38bdf8 50%, #2563eb 100%)',
+              background: 'linear-gradient(90deg, #67e8f9 0%, #38bdf8 50%, #3b82f6 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -158,7 +180,7 @@ const LandingPage = () => {
           Experience our flagship product: <strong className="text-white">Flow</strong>.
         </motion.p>
 
-        {/* 核心按钮: 蓝色辉光 */}
+        {/* 核心按钮: 白底黑字高对比 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -166,10 +188,51 @@ const LandingPage = () => {
         >
           <a
             href={APP_URL}
-            className="group relative inline-flex items-center gap-3 px-10 py-4 bg-white text-black rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-500 hover:scale-105 shadow-[0_0_40px_rgba(56,189,248,0.4)] hover:shadow-[0_0_60px_rgba(37,99,235,0.6)]"
+            style={{
+              position: 'relative',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              paddingLeft: '2.5rem',
+              paddingRight: '2.5rem',
+              paddingTop: '1rem',
+              paddingBottom: '1rem',
+              background: '#ffffff',
+              color: '#000000',
+              borderRadius: '9999px',
+              fontWeight: 700,
+              fontSize: '0.875rem',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              transition: 'all 0.5s',
+              boxShadow: '0 0 40px rgba(56, 189, 248, 0.5)',
+              cursor: 'pointer',
+              textDecoration: 'none'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 0 60px rgba(56, 189, 248, 0.8)';
+              const arrow = e.currentTarget.querySelector('.arrow-icon');
+              if (arrow) (arrow as HTMLElement).style.transform = 'rotate(-45deg)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 0 40px rgba(56, 189, 248, 0.5)';
+              const arrow = e.currentTarget.querySelector('.arrow-icon');
+              if (arrow) (arrow as HTMLElement).style.transform = 'rotate(0deg)';
+            }}
           >
             <span>Enter Flow</span>
-            <div className="bg-black text-white rounded-full p-1 group-hover:-rotate-45 transition-transform duration-300">
+            <div
+              className="arrow-icon"
+              style={{
+                background: '#000000',
+                color: '#ffffff',
+                borderRadius: '9999px',
+                padding: '0.25rem',
+                transition: 'transform 0.3s'
+              }}
+            >
               <ArrowRight size={14} />
             </div>
           </a>
