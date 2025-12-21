@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'Noto Sans SC', 'sans-serif'],
+        sans: ['Space Grotesk', 'sans-serif'],
+        display: ['Orbitron', 'sans-serif'],
       },
       colors: {
         // 新的深空黑背景 (Deep Tech Black)

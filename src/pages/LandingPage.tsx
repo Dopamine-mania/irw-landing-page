@@ -22,15 +22,26 @@ const LandingPage = () => {
           background: 'radial-gradient(ellipse at top, #0c4a6e 0%, #1e3a8a 20%, #1e1b4b 40%, #0f172a 60%, #020617 100%)'
         }} />
 
-        {/* 动态光晕效果 */}
+        {/* 动态光晕效果 - 增强版 */}
         <div style={{
           position: 'absolute',
           top: 0,
           right: 0,
           bottom: 0,
           left: 0,
-          background: 'radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.4) 0%, rgba(14, 165, 233, 0.2) 30%, transparent 60%)',
           animation: 'pulse 8s ease-in-out infinite'
+        }} />
+
+        {/* 第二层光晕 - 右下角 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: 'radial-gradient(circle at 70% 80%, rgba(37, 99, 235, 0.3) 0%, rgba(14, 165, 233, 0.15) 25%, transparent 50%)',
+          animation: 'pulse 10s ease-in-out infinite reverse'
         }} />
 
         {/* 底部暗角 */}
@@ -107,17 +118,25 @@ const LandingPage = () => {
           </span>
         </motion.div>
 
-        {/* 主标题: 蓝白渐变 */}
+        {/* 主标题: 蓝白渐变 - 使用 Orbitron 艺术字体 */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-8xl font-light tracking-tight text-white mb-6 leading-none"
+          style={{
+            fontFamily: 'Orbitron, sans-serif',
+            fontSize: 'clamp(3rem, 8vw, 6rem)',
+            fontWeight: 300,
+            letterSpacing: '0.05em',
+            color: 'white',
+            marginBottom: '1.5rem',
+            lineHeight: 1
+          }}
         >
           Tune Your <br/>
           <span
-            className="font-bold"
             style={{
+              fontWeight: 900,
               background: 'linear-gradient(90deg, #ffffff 0%, #38bdf8 50%, #2563eb 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
