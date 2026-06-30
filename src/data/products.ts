@@ -4,19 +4,30 @@ export const CFD_GUMROAD_URL = 'https://chen77studio.gumroad.com/l/data-driven-c
 export const AUDIO_DSP_GUMROAD_URL = 'https://chen77studio.gumroad.com/l/audio-dsp-blueprint-code-lab';
 export const FLOW_URL = 'https://flow.inresonancewell.com';
 
-export type ProductStatus = 'Available' | 'Published' | 'Reserve' | 'Under audit';
+export type ProductStatus =
+  | 'Available'
+  | 'Published'
+  | 'Reserve'
+  | 'Under audit'
+  | 'Discovery'
+  | 'Research';
 
-export type ProductLine = 'Resonance Kits' | 'Knowledge Code Labs';
+export type ProductLine =
+  | 'Resonance Kits'
+  | 'Knowledge Code Labs'
+  | 'Opportunity Lab'
+  | 'Wellbeing Lab';
 
 export type Product = {
   name: string;
   line: ProductLine;
   category: string;
   description: string;
-  platform: 'Lemon Squeezy' | 'Gumroad' | 'Internal reserve';
+  platform: 'Lemon Squeezy' | 'Gumroad' | 'Internal reserve' | 'Product discovery' | 'Prototype';
   href?: string;
   status: ProductStatus;
   price?: string;
+  ctaLabel?: string;
   audience: string;
 };
 
@@ -116,6 +127,36 @@ export const knowledgeLabProducts: Product[] = [
   },
 ];
 
+export const opportunityLabProducts: Product[] = [
+  {
+    name: 'Opportunity Lab Product Bets',
+    line: 'Opportunity Lab',
+    category: 'Market validation',
+    description:
+      'A disciplined lane for small AI-native web tools, micro-SaaS, workflow products and future iOS apps that start from visible paid pain.',
+    platform: 'Product discovery',
+    status: 'Discovery',
+    audience:
+      'Niche operators, creators, teams and independent professionals with specific workflow bottlenecks worth paying to remove.',
+  },
+];
+
+export const wellbeingLabProducts: Product[] = [
+  {
+    name: 'Flow Prototype',
+    line: 'Wellbeing Lab',
+    category: 'AI + sound research',
+    description:
+      'An earlier interactive sound and wellbeing prototype. It remains a research reference while the company validates stronger commercial wedges.',
+    platform: 'Prototype',
+    href: FLOW_URL,
+    status: 'Research',
+    ctaLabel: 'View prototype',
+    audience:
+      'Wellbeing creators, sound practitioners and product collaborators exploring digital sound/wellbeing workflows.',
+  },
+];
+
 export const resonanceKitPipeline = [
   'Operations and internal-tool kits',
   'Document and offline-workbench kits',
@@ -128,4 +169,9 @@ export const knowledgeLabPipeline = [
   'Research-to-code implementation guides',
 ];
 
-export const allCatalogProducts = [...resonanceKitProducts, ...knowledgeLabProducts];
+export const allCatalogProducts = [
+  ...resonanceKitProducts,
+  ...knowledgeLabProducts,
+  ...opportunityLabProducts,
+  ...wellbeingLabProducts,
+];

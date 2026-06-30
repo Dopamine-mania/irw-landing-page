@@ -13,7 +13,9 @@ import {
   SUPPORT_EMAIL,
   allCatalogProducts,
   knowledgeLabProducts,
+  opportunityLabProducts,
   resonanceKitProducts,
+  wellbeingLabProducts,
   type Product,
   type ProductStatus,
 } from '../data/products';
@@ -23,6 +25,8 @@ const statusTone: Record<ProductStatus, string> = {
   Published: 'status-available',
   Reserve: 'status-reserve',
   'Under audit': 'status-audit',
+  Discovery: 'status-discovery',
+  Research: 'status-research',
 };
 
 const CatalogProductCard = ({ product }: { product: Product }) => (
@@ -47,7 +51,7 @@ const CatalogProductCard = ({ product }: { product: Product }) => (
       <span className="catalog-platform">{product.platform}</span>
       {product.href ? (
         <a href={product.href} target="_blank" rel="noreferrer" className="external-badge">
-          View product
+          {product.ctaLabel ?? 'View product'}
           <ExternalLink size={13} />
         </a>
       ) : (
@@ -67,6 +71,9 @@ const ProductsPage = () => {
   ).length;
   const reserveCount = allCatalogProducts.filter((product) => product.status === 'Reserve').length;
   const auditCount = allCatalogProducts.filter((product) => product.status === 'Under audit').length;
+  const exploratoryCount = allCatalogProducts.filter((product) =>
+    ['Discovery', 'Research'].includes(product.status),
+  ).length;
 
   return (
     <div className="site-page">
@@ -92,6 +99,8 @@ const ProductsPage = () => {
           <a href="/">Home</a>
           <a href="#resonance-kits">Kits</a>
           <a href="#code-labs">Code Labs</a>
+          <a href="#opportunity-lab">Opportunity</a>
+          <a href="#wellbeing-lab">Wellbeing</a>
           <a href="#audit-queue">Audit Queue</a>
         </nav>
 
@@ -116,8 +125,8 @@ const ProductsPage = () => {
 
             <h1 className="hero-title">A cleaner shelf for current and upcoming products.</h1>
             <p className="hero-copy">
-              This catalog separates sellable products from reserve candidates and audit-queue
-              kits. It keeps the homepage focused while giving future products room to grow.
+              This catalog separates current public products, reserve candidates, discovery
+              bets and research prototypes across the company’s four product lines.
             </p>
           </div>
 
@@ -128,11 +137,15 @@ const ProductsPage = () => {
             </div>
             <div className="catalog-stat">
               <span>{reserveCount}</span>
-              <p>Reserve kits</p>
+              <p>Reserve</p>
             </div>
             <div className="catalog-stat">
               <span>{auditCount}</span>
               <p>Audit queue</p>
+            </div>
+            <div className="catalog-stat">
+              <span>{exploratoryCount}</span>
+              <p>Discovery / research</p>
             </div>
           </div>
         </section>
@@ -170,6 +183,44 @@ const ProductsPage = () => {
 
           <div className="catalog-grid catalog-grid--two">
             {knowledgeLabProducts.map((product) => (
+              <CatalogProductCard key={product.name} product={product} />
+            ))}
+          </div>
+        </section>
+
+        <section id="opportunity-lab" className="site-section product-line-section">
+          <div className="catalog-section-heading">
+            <div>
+              <p className="section-eyebrow">Opportunity Lab</p>
+              <h2 className="section-title">Small product bets before they become product lines.</h2>
+            </div>
+            <p>
+              This lane captures the company’s independent-developer engine: find paid pain,
+              ship small, and keep only the product bets that earn real demand.
+            </p>
+          </div>
+
+          <div className="catalog-grid catalog-grid--single">
+            {opportunityLabProducts.map((product) => (
+              <CatalogProductCard key={product.name} product={product} />
+            ))}
+          </div>
+        </section>
+
+        <section id="wellbeing-lab" className="site-section product-line-section">
+          <div className="catalog-section-heading">
+            <div>
+              <p className="section-eyebrow">Wellbeing Lab</p>
+              <h2 className="section-title">Sound, wellbeing and future creator tools.</h2>
+            </div>
+            <p>
+              This lane is intentionally marked as research until a sharper commercial wedge is
+              validated. Flow stays visible as context, not as a current flagship product.
+            </p>
+          </div>
+
+          <div className="catalog-grid catalog-grid--single">
+            {wellbeingLabProducts.map((product) => (
               <CatalogProductCard key={product.name} product={product} />
             ))}
           </div>

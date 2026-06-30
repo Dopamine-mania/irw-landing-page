@@ -19,8 +19,8 @@ IN RESONANCE WELL LTD's digital product lines.
 ## Site routes
 
 - `/` — company mother-site and product-line overview.
-- `/products` — product catalog for public products, reserve candidates and
-  audit-queue boundaries.
+- `/products` — four-line product catalog for public products, reserve
+  candidates, discovery bets, research prototypes and audit-queue boundaries.
 - `/kits` — short alias for the product catalog.
 
 ## Local development
