@@ -304,14 +304,16 @@ a {
 
 .lane-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
 .lane-card,
 .product-card,
 .trust-card,
-.wellbeing-card {
+.wellbeing-card,
+.opportunity-panel,
+.opportunity-step {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.06);
@@ -426,6 +428,72 @@ a {
   color: #fff;
   margin-top: 24px;
   padding: 10px 16px;
+}
+
+.opportunity-panel {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  overflow: hidden;
+  padding: 40px;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(56, 189, 248, 0.22), transparent 34%),
+    radial-gradient(circle at 84% 78%, rgba(99, 102, 241, 0.2), transparent 36%),
+    rgba(2, 6, 23, 0.7);
+}
+
+.opportunity-intro {
+  align-self: center;
+}
+
+.opportunity-title {
+  margin: 28px 0 0;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.opportunity-copy {
+  margin: 22px 0 0;
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.opportunity-steps {
+  display: grid;
+  gap: 14px;
+}
+
+.opportunity-step {
+  position: relative;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.opportunity-step__number {
+  color: #38bdf8;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.opportunity-step__title {
+  margin: 10px 0 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.opportunity-step__copy {
+  margin: 10px 0 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .trust-panel {
@@ -566,6 +634,7 @@ a {
   .lane-grid,
   .product-grid,
   .trust-panel,
+  .opportunity-panel,
   .wellbeing-card__inner {
     grid-template-columns: 1fr;
   }

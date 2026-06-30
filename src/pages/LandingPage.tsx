@@ -8,8 +8,10 @@ import {
   ExternalLink,
   Globe2,
   Mail,
+  Rocket,
   ShieldCheck,
   Sparkles,
+  Target,
 } from 'lucide-react';
 
 const SUPPORT_EMAIL = 'support@inresonancewell.com';
@@ -42,6 +44,14 @@ const productLanes = [
     description:
       'A long-term research lane exploring sound, spatial interfaces and practical digital tools for wellbeing creators.',
     href: '#wellbeing-lab',
+  },
+  {
+    icon: Rocket,
+    eyebrow: 'Opportunity Lab',
+    title: 'Fast AI-native product bets',
+    description:
+      'Small, focused web tools, micro-SaaS and future iOS apps built around market pain that shows real willingness to pay.',
+    href: '#opportunity-lab',
   },
 ];
 
@@ -100,6 +110,24 @@ const principles = [
   'Checkout and delivery through trusted platforms',
 ];
 
+const opportunitySteps = [
+  {
+    title: 'Find paid pain',
+    description:
+      'Track real workflow friction in communities, operators and niche buyers before committing to a build.',
+  },
+  {
+    title: 'Ship small',
+    description:
+      'Turn validated pain into focused AI-native tools, micro-SaaS, web utilities or iOS experiments.',
+  },
+  {
+    title: 'Graduate or kill',
+    description:
+      'Keep winners as products, turn useful patterns into kits, and stop ideas that do not earn attention.',
+  },
+];
+
 const fadeIn = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
@@ -153,6 +181,7 @@ const LandingPage = () => {
           <a href="#products">Products</a>
           <a href="#resonance-kits">Kits</a>
           <a href="#code-labs">Code Labs</a>
+          <a href="#opportunity-lab">Opportunity</a>
           <a href="#wellbeing-lab">Wellbeing Lab</a>
         </nav>
 
@@ -179,8 +208,9 @@ const LandingPage = () => {
             <h1 className="hero-title">Practical software products from a focused studio.</h1>
 
             <p className="hero-copy">
-              We build source-code starter kits, technical code labs and sound/wellbeing
-              experiments that turn real workflows into usable software.
+              We build source-code starter kits, technical code labs, opportunity-led
+              AI products and sound/wellbeing experiments that turn real workflows into
+              usable software.
             </p>
 
             <div className="hero-actions">
@@ -198,8 +228,8 @@ const LandingPage = () => {
         <section id="products" className="site-section">
           <SectionHeading
             eyebrow="Product lines"
-            title="Three lanes, one company home."
-            description="The company site is the trust layer. Lemon Squeezy and Gumroad handle checkout, delivery and receipts."
+            title="Four lanes, one company home."
+            description="The company site is the trust layer. Lemon Squeezy and Gumroad handle current checkout, while new product bets start here as they prove demand."
           />
 
           <div className="lane-grid">
@@ -221,6 +251,33 @@ const LandingPage = () => {
                 </a>
               );
             })}
+          </div>
+        </section>
+
+        <section id="opportunity-lab" className="site-section">
+          <div className="opportunity-panel">
+            <div className="opportunity-intro">
+              <div className="eyebrow-pill">
+                <Target size={13} />
+                <span>Opportunity Lab</span>
+              </div>
+              <h2 className="opportunity-title">A practical engine for new product bets.</h2>
+              <p className="opportunity-copy">
+                Some products start from existing assets. Others start from fresh market
+                pain. Opportunity Lab is where we test small, useful software ideas quickly:
+                web tools, workflow products, micro-SaaS and future iOS apps when the signal is real.
+              </p>
+            </div>
+
+            <div className="opportunity-steps">
+              {opportunitySteps.map((step, index) => (
+                <article key={step.title} className="opportunity-step">
+                  <span className="opportunity-step__number">0{index + 1}</span>
+                  <h3 className="opportunity-step__title">{step.title}</h3>
+                  <p className="opportunity-step__copy">{step.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

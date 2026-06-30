@@ -11,6 +11,8 @@ IN RESONANCE WELL LTD's digital product lines.
 - **Resonance Kits** — source-code starter kits sold through Lemon Squeezy.
 - **Knowledge Code Labs** — technical educational code labs sold through
   Gumroad.
+- **Opportunity Lab** — small AI-native product bets, web tools, micro-SaaS and
+  future iOS experiments built around validated market pain.
 - **Wellbeing Lab** — long-term AI + sound + wellbeing experiments, including
   the Flow prototype.
 
@@ -33,6 +35,8 @@ npm run build
 2. Buyer-facing support email is `support@inresonancewell.com`.
 3. Flow should be described as an earlier prototype / research line, not the
    current flagship product.
-4. Avoid medical, therapeutic, passive-income or production-certification
+4. Opportunity Lab should be described as a disciplined validation lane, not
+   random opportunism or guaranteed income.
+5. Avoid medical, therapeutic, passive-income or production-certification
    claims unless separately verified.
-5. Do not push or deploy changes without explicit owner confirmation.
+6. Do not push or deploy changes without explicit owner confirmation.
