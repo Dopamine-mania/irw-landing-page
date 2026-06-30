@@ -13,12 +13,16 @@ import {
   Sparkles,
   Target,
 } from 'lucide-react';
-
-const SUPPORT_EMAIL = 'support@inresonancewell.com';
-const LEMON_STOREFRONT_URL = 'https://resonance-kits.lemonsqueezy.com';
-const CFD_GUMROAD_URL = 'https://chen77studio.gumroad.com/l/data-driven-cfd-foundations';
-const AUDIO_DSP_GUMROAD_URL = 'https://chen77studio.gumroad.com/l/audio-dsp-blueprint-code-lab';
-const FLOW_URL = 'https://flow.inresonancewell.com';
+import {
+  FLOW_URL,
+  LEMON_STOREFRONT_URL,
+  SUPPORT_EMAIL,
+  knowledgeLabPipeline,
+  knowledgeLabProducts,
+  resonanceKitPipeline,
+  resonanceKitProducts,
+  type Product,
+} from '../data/products';
 
 const productLanes = [
   {
@@ -53,69 +57,6 @@ const productLanes = [
       'A long-term research lane exploring sound, spatial interfaces and practical digital tools for wellbeing creators.',
     href: '#wellbeing-lab',
   },
-];
-
-const resonanceKitProducts = [
-  {
-    name: 'PanelDocket',
-    category: 'Review workflow',
-    description:
-      'A review, scoring and approval workflow starter kit for developers building reviewer portals or decision systems.',
-    platform: 'Lemon Squeezy',
-    href: LEMON_STOREFRONT_URL,
-    status: 'Available',
-  },
-  {
-    name: 'WrenchLine Maintenance Hub',
-    category: 'Operations workflow',
-    description:
-      'A facility maintenance and work-order workflow starter kit for asset, issue and operations software foundations.',
-    platform: 'Lemon Squeezy',
-    href: LEMON_STOREFRONT_URL,
-    status: 'Available',
-  },
-  {
-    name: 'BrandForge Email Template Studio',
-    category: 'Brand workflow',
-    description:
-      'A self-hosted brand-compliant email template workflow foundation with brand kits, approvals and audit trails.',
-    platform: 'Lemon Squeezy',
-    href: LEMON_STOREFRONT_URL,
-    status: 'Available',
-  },
-];
-
-const resonanceKitPipeline = [
-  'Operations and internal-tool kits',
-  'Document and offline-workbench kits',
-  'Security and developer-workflow kits',
-];
-
-const knowledgeLabProducts = [
-  {
-    name: 'Data-Driven CFD Foundations',
-    category: 'CFD / scientific Python',
-    description:
-      'A compact code lab for technical learners moving from CFD and data-driven modeling concepts into runnable examples.',
-    platform: 'Gumroad',
-    href: CFD_GUMROAD_URL,
-    status: 'Published',
-  },
-  {
-    name: 'Audio DSP Blueprint Code Lab',
-    category: 'Audio DSP / Python',
-    description:
-      'A lightweight audio signal processing code lab with runnable examples for spectra, time-frequency analysis and features.',
-    platform: 'Gumroad',
-    href: AUDIO_DSP_GUMROAD_URL,
-    status: 'Published',
-  },
-];
-
-const knowledgeLabPipeline = [
-  'Scientific Python mini-labs',
-  'Sound and music computing labs',
-  'Research-to-code implementation guides',
 ];
 
 const principles = [
@@ -174,23 +115,20 @@ const ExternalLinkBadge = ({ href, children }: { href: string; children: ReactNo
 const ProductCard = ({
   product,
 }: {
-  product: {
-    name: string;
-    category: string;
-    description: string;
-    platform: string;
-    href: string;
-    status: string;
-  };
+  product: Product;
 }) => (
   <article className="product-card">
-    <div className="product-meta">
-      <span className="product-tag">{product.category}</span>
-      <span className="product-status">{product.status}</span>
+    <div>
+      <div className="product-meta">
+        <span className="product-tag">{product.category}</span>
+        <span className="product-status">{product.status}</span>
+      </div>
+      <h3 className="product-title">{product.name}</h3>
+      <p className="product-copy">{product.description}</p>
     </div>
-    <h3 className="product-title">{product.name}</h3>
-    <p className="product-copy">{product.description}</p>
-    <ExternalLinkBadge href={product.href}>View on {product.platform}</ExternalLinkBadge>
+    {product.href ? (
+      <ExternalLinkBadge href={product.href}>View on {product.platform}</ExternalLinkBadge>
+    ) : null}
   </article>
 );
 
@@ -211,6 +149,8 @@ const PipelinePanel = ({ items, label }: { items: string[]; label: string }) => 
 );
 
 const LandingPage = () => {
+  const homepageKits = resonanceKitProducts.filter((product) => product.status === 'Available');
+
   return (
     <div className="site-page">
       <div className="noise-overlay" />
@@ -269,8 +209,8 @@ const LandingPage = () => {
             </p>
 
             <div className="hero-actions">
-              <a href="#products" className="button-primary">
-                Browse products
+              <a href="/products" className="button-primary">
+                Browse catalog
                 <ArrowRight size={16} />
               </a>
               <a href="#resonance-kits" className="button-secondary">
@@ -307,6 +247,13 @@ const LandingPage = () => {
               );
             })}
           </div>
+
+          <div className="section-toolbar section-toolbar--center">
+            <p>Need the fuller inventory view?</p>
+            <a href="/products" className="text-link">
+              Open product catalog
+            </a>
+          </div>
         </section>
 
         <section id="resonance-kits" className="site-section product-line-section">
@@ -324,7 +271,7 @@ const LandingPage = () => {
           </div>
 
           <div className="product-grid product-grid--three">
-            {resonanceKitProducts.map((product) => (
+            {homepageKits.map((product) => (
               <ProductCard key={product.name} product={product} />
             ))}
           </div>

@@ -16,6 +16,13 @@ IN RESONANCE WELL LTD's digital product lines.
 - **Wellbeing Lab** — long-term AI + sound + wellbeing experiments, including
   the Flow prototype.
 
+## Site routes
+
+- `/` — company mother-site and product-line overview.
+- `/products` — product catalog for public products, reserve candidates and
+  audit-queue boundaries.
+- `/kits` — short alias for the product catalog.
+
 ## Local development
 
 ```bash
@@ -36,10 +43,12 @@ npm run build
 3. Homepage product presentation should stay organized by business line:
    Resonance Kits, Knowledge Code Labs, Opportunity Lab, Wellbeing Lab, then
    Trust layer. Do not mix every product into one long undifferentiated grid.
-4. Flow should be described as an earlier prototype / research line, not the
+4. Use the `/products` catalog for broader inventory. Keep the homepage focused
+   on flagship products and high-level trust.
+5. Flow should be described as an earlier prototype / research line, not the
    current flagship product.
-5. Opportunity Lab should be described as a disciplined validation lane, not
+6. Opportunity Lab should be described as a disciplined validation lane, not
    random opportunism or guaranteed income.
-6. Avoid medical, therapeutic, passive-income or production-certification
+7. Avoid medical, therapeutic, passive-income or production-certification
    claims unless separately verified.
-7. Do not push or deploy changes without explicit owner confirmation.
+8. Do not push or deploy changes without explicit owner confirmation.
