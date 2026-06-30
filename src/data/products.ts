@@ -111,7 +111,7 @@ export const knowledgeLabProducts: Product[] = [
     platform: 'Gumroad',
     href: AUDIO_DSP_GUMROAD_URL,
     status: 'Published',
-    price: '$9.90',
+    price: '$19',
     audience: 'Audio learners, music-computing students, and signal-processing beginners.',
   },
 ];
