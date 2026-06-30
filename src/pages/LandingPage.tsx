@@ -38,14 +38,6 @@ const productLanes = [
     href: '#code-labs',
   },
   {
-    icon: Beaker,
-    eyebrow: 'Wellbeing Lab',
-    title: 'AI + sound experiments',
-    description:
-      'A long-term research lane exploring sound, spatial interfaces and practical digital tools for wellbeing creators.',
-    href: '#wellbeing-lab',
-  },
-  {
     icon: Rocket,
     eyebrow: 'Opportunity Lab',
     title: 'Fast AI-native product bets',
@@ -53,12 +45,20 @@ const productLanes = [
       'Small, focused web tools, micro-SaaS and future iOS apps built around market pain that shows real willingness to pay.',
     href: '#opportunity-lab',
   },
+  {
+    icon: Beaker,
+    eyebrow: 'Wellbeing Lab',
+    title: 'AI + sound experiments',
+    description:
+      'A long-term research lane exploring sound, spatial interfaces and practical digital tools for wellbeing creators.',
+    href: '#wellbeing-lab',
+  },
 ];
 
-const featuredProducts = [
+const resonanceKitProducts = [
   {
     name: 'PanelDocket',
-    category: 'Resonance Kits',
+    category: 'Review workflow',
     description:
       'A review, scoring and approval workflow starter kit for developers building reviewer portals or decision systems.',
     platform: 'Lemon Squeezy',
@@ -67,7 +67,7 @@ const featuredProducts = [
   },
   {
     name: 'WrenchLine Maintenance Hub',
-    category: 'Resonance Kits',
+    category: 'Operations workflow',
     description:
       'A facility maintenance and work-order workflow starter kit for asset, issue and operations software foundations.',
     platform: 'Lemon Squeezy',
@@ -76,16 +76,25 @@ const featuredProducts = [
   },
   {
     name: 'BrandForge Email Template Studio',
-    category: 'Resonance Kits',
+    category: 'Brand workflow',
     description:
       'A self-hosted brand-compliant email template workflow foundation with brand kits, approvals and audit trails.',
     platform: 'Lemon Squeezy',
     href: LEMON_STOREFRONT_URL,
     status: 'Available',
   },
+];
+
+const resonanceKitPipeline = [
+  'Operations and internal-tool kits',
+  'Document and offline-workbench kits',
+  'Security and developer-workflow kits',
+];
+
+const knowledgeLabProducts = [
   {
     name: 'Data-Driven CFD Foundations',
-    category: 'Knowledge Code Labs',
+    category: 'CFD / scientific Python',
     description:
       'A compact code lab for technical learners moving from CFD and data-driven modeling concepts into runnable examples.',
     platform: 'Gumroad',
@@ -94,13 +103,19 @@ const featuredProducts = [
   },
   {
     name: 'Audio DSP Blueprint Code Lab',
-    category: 'Knowledge Code Labs',
+    category: 'Audio DSP / Python',
     description:
       'A lightweight audio signal processing code lab with runnable examples for spectra, time-frequency analysis and features.',
     platform: 'Gumroad',
     href: AUDIO_DSP_GUMROAD_URL,
     status: 'Published',
   },
+];
+
+const knowledgeLabPipeline = [
+  'Scientific Python mini-labs',
+  'Sound and music computing labs',
+  'Research-to-code implementation guides',
 ];
 
 const principles = [
@@ -156,6 +171,45 @@ const ExternalLinkBadge = ({ href, children }: { href: string; children: ReactNo
   </a>
 );
 
+const ProductCard = ({
+  product,
+}: {
+  product: {
+    name: string;
+    category: string;
+    description: string;
+    platform: string;
+    href: string;
+    status: string;
+  };
+}) => (
+  <article className="product-card">
+    <div className="product-meta">
+      <span className="product-tag">{product.category}</span>
+      <span className="product-status">{product.status}</span>
+    </div>
+    <h3 className="product-title">{product.name}</h3>
+    <p className="product-copy">{product.description}</p>
+    <ExternalLinkBadge href={product.href}>View on {product.platform}</ExternalLinkBadge>
+  </article>
+);
+
+const PipelinePanel = ({ items, label }: { items: string[]; label: string }) => (
+  <div className="pipeline-panel">
+    <div>
+      <p className="pipeline-label">{label}</p>
+      <h3 className="pipeline-title">Reserved shelf space for what comes next.</h3>
+    </div>
+    <div className="pipeline-list">
+      {items.map((item) => (
+        <span key={item} className="pipeline-pill">
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
 const LandingPage = () => {
   return (
     <div className="site-page">
@@ -183,6 +237,7 @@ const LandingPage = () => {
           <a href="#code-labs">Code Labs</a>
           <a href="#opportunity-lab">Opportunity</a>
           <a href="#wellbeing-lab">Wellbeing Lab</a>
+          <a href="#trust">Trust</a>
         </nav>
 
         <a href={`mailto:${SUPPORT_EMAIL}`} className="support-link">
@@ -254,7 +309,51 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="opportunity-lab" className="site-section">
+        <section id="resonance-kits" className="site-section product-line-section">
+          <SectionHeading
+            eyebrow="Resonance Kits"
+            title="Starter kits get their own shelf."
+            description="This lane is for source-code products. The homepage shows the current flagship kits and reserves room for future audited releases without turning the page into a giant archive."
+          />
+
+          <div className="section-toolbar">
+            <p>Available now through Lemon Squeezy.</p>
+            <a href={LEMON_STOREFRONT_URL} target="_blank" rel="noreferrer" className="text-link">
+              View storefront
+            </a>
+          </div>
+
+          <div className="product-grid product-grid--three">
+            {resonanceKitProducts.map((product) => (
+              <ProductCard key={product.name} product={product} />
+            ))}
+          </div>
+
+          <PipelinePanel items={resonanceKitPipeline} label="Kit pipeline" />
+        </section>
+
+        <section id="code-labs" className="site-section product-line-section">
+          <SectionHeading
+            eyebrow="Knowledge Code Labs"
+            title="Technical learning products stay separate."
+            description="This lane is for compact, runnable technical products based on engineering, scientific computing, CFD, audio DSP and future research-to-code material."
+          />
+
+          <div className="section-toolbar">
+            <p>Published now through Gumroad.</p>
+            <span className="section-note">More labs can be added without mixing them into the kit shelf.</span>
+          </div>
+
+          <div className="product-grid product-grid--two">
+            {knowledgeLabProducts.map((product) => (
+              <ProductCard key={product.name} product={product} />
+            ))}
+          </div>
+
+          <PipelinePanel items={knowledgeLabPipeline} label="Lab pipeline" />
+        </section>
+
+        <section id="opportunity-lab" className="site-section product-line-section">
           <div className="opportunity-panel">
             <div className="opportunity-intro">
               <div className="eyebrow-pill">
@@ -281,32 +380,26 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="resonance-kits" className="site-section">
-          <span id="code-labs" className="sr-only">
-            Knowledge Code Labs
-          </span>
-          <SectionHeading
-            eyebrow="Featured products"
-            title="Current sellable digital products."
-            description="Only products with packaging, documentation and clear support boundaries are shown here."
-          />
-
-          <div className="product-grid">
-            {featuredProducts.map((product) => (
-              <article key={product.name} className="product-card">
-                <div className="product-meta">
-                  <span className="product-tag">{product.category}</span>
-                  <span className="product-status">{product.status}</span>
-                </div>
-                <h3 className="product-title">{product.name}</h3>
-                <p className="product-copy">{product.description}</p>
-                <ExternalLinkBadge href={product.href}>View on {product.platform}</ExternalLinkBadge>
-              </article>
-            ))}
+        <section id="wellbeing-lab" className="site-section product-line-section">
+          <div className="wellbeing-card">
+            <div className="wellbeing-card__inner">
+              <div>
+                <p className="section-eyebrow">Wellbeing Lab</p>
+                <h2 className="wellbeing-title">Flow remains a research line.</h2>
+              </div>
+              <div>
+                <p className="wellbeing-copy">
+                  Flow is an earlier interactive prototype exploring sound, spatial interfaces
+                  and wellbeing experiences. This line is currently treated as a research and
+                  validation lab while the company focuses on clean digital product revenue.
+                </p>
+                <ExternalLinkBadge href={FLOW_URL}>View Flow prototype</ExternalLinkBadge>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="site-section">
+        <section id="trust" className="site-section">
           <div className="trust-panel">
             <div>
               <p className="section-eyebrow">Trust layer</p>
@@ -348,25 +441,6 @@ const LandingPage = () => {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="wellbeing-lab" className="site-section">
-          <div className="wellbeing-card">
-            <div className="wellbeing-card__inner">
-              <div>
-                <p className="section-eyebrow">Wellbeing Lab</p>
-                <h2 className="wellbeing-title">Flow remains a research line.</h2>
-              </div>
-              <div>
-                <p className="wellbeing-copy">
-                  Flow is an earlier interactive prototype exploring sound, spatial interfaces
-                  and wellbeing experiences. This line is currently treated as a research and
-                  validation lab while the company focuses on clean digital product revenue.
-                </p>
-                <ExternalLinkBadge href={FLOW_URL}>View Flow prototype</ExternalLinkBadge>
-              </div>
             </div>
           </div>
         </section>
