@@ -172,17 +172,14 @@ const LandingPage = () => {
         </a>
 
         <nav className="site-nav" aria-label="Primary navigation">
-          <a href="#products">Products</a>
-          <a href="#resonance-kits">Kits</a>
-          <a href="#code-labs">Code Labs</a>
-          <a href="#opportunity-lab">Opportunity</a>
-          <a href="#wellbeing-lab">Wellbeing Lab</a>
+          <a href="#products">Product Lines</a>
+          <a href="/products">Catalog</a>
           <a href="#trust">Trust</a>
         </nav>
 
         <a href={`mailto:${SUPPORT_EMAIL}`} className="support-link">
           <Mail size={13} />
-          Support
+          Contact
         </a>
       </header>
 
@@ -213,8 +210,8 @@ const LandingPage = () => {
                 Browse catalog
                 <ArrowRight size={16} />
               </a>
-              <a href="#resonance-kits" className="button-secondary">
-                View Resonance Kits
+              <a href="#products" className="button-secondary">
+                Explore product lines
               </a>
             </div>
           </motion.div>

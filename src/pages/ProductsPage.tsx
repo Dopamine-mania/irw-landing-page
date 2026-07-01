@@ -29,6 +29,40 @@ const statusTone: Record<ProductStatus, string> = {
   Research: 'status-research',
 };
 
+const catalogLineLinks = [
+  {
+    href: '#resonance-kits',
+    number: '01',
+    label: 'Resonance Kits',
+    detail: 'Source-code products',
+  },
+  {
+    href: '#code-labs',
+    number: '02',
+    label: 'Knowledge Code Labs',
+    detail: 'Runnable technical labs',
+  },
+  {
+    href: '#opportunity-lab',
+    number: '03',
+    label: 'Opportunity Lab',
+    detail: 'Market-led product bets',
+  },
+  {
+    href: '#wellbeing-lab',
+    number: '04',
+    label: 'Wellbeing Lab',
+    detail: 'Sound and wellbeing research',
+  },
+];
+
+const catalogStatusLegend = [
+  { label: 'Available / Published', tone: 'status-available' },
+  { label: 'Reserve', tone: 'status-reserve' },
+  { label: 'Under audit', tone: 'status-audit' },
+  { label: 'Discovery / Research', tone: 'status-discovery' },
+];
+
 const CatalogProductCard = ({ product }: { product: Product }) => (
   <article className="catalog-card">
     <div className="catalog-card__top">
@@ -128,26 +162,54 @@ const ProductsPage = () => {
               This catalog separates current public products, reserve candidates, discovery
               bets and research prototypes across the company’s four product lines.
             </p>
+
+            <div className="catalog-line-index" aria-label="Product line index">
+              {catalogLineLinks.map((line) => (
+                <a key={line.href} href={line.href} className="catalog-line-card">
+                  <span className="catalog-line-card__number">{line.number}</span>
+                  <span className="catalog-line-card__label">{line.label}</span>
+                  <span className="catalog-line-card__detail">{line.detail}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="catalog-stats" aria-label="Catalog summary">
-            <div className="catalog-stat">
-              <span>{availableCount}</span>
-              <p>Public products</p>
+          <aside className="catalog-directory-panel" aria-label="Catalog summary and status guide">
+            <div>
+              <p className="trust-label">Catalog snapshot</p>
+              <h2 className="catalog-directory-title">Current shelf state</h2>
             </div>
-            <div className="catalog-stat">
-              <span>{reserveCount}</span>
-              <p>Reserve</p>
+
+            <div className="catalog-stats catalog-stats--compact" aria-label="Catalog summary">
+              <div className="catalog-stat">
+                <span>{availableCount}</span>
+                <p>Public</p>
+              </div>
+              <div className="catalog-stat">
+                <span>{reserveCount}</span>
+                <p>Reserve</p>
+              </div>
+              <div className="catalog-stat">
+                <span>{auditCount}</span>
+                <p>Audit</p>
+              </div>
+              <div className="catalog-stat">
+                <span>{exploratoryCount}</span>
+                <p>Discovery</p>
+              </div>
             </div>
-            <div className="catalog-stat">
-              <span>{auditCount}</span>
-              <p>Audit queue</p>
+
+            <div className="catalog-status-legend">
+              <p className="trust-label">Status guide</p>
+              <div className="catalog-status-list">
+                {catalogStatusLegend.map((item) => (
+                  <span key={item.label} className={`product-status ${item.tone}`}>
+                    {item.label}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="catalog-stat">
-              <span>{exploratoryCount}</span>
-              <p>Discovery / research</p>
-            </div>
-          </div>
+          </aside>
         </section>
 
         <section id="resonance-kits" className="site-section product-line-section">
